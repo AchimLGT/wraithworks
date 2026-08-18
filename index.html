@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wraithworks</title>
-    <!-- Fontlar: Başlık için Serif, genel metinler için Retro/Pixel stili -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=VT323&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -15,7 +13,7 @@
             --border-dark: #1b1612;
             --text-dark: #221d18;
             --text-light: #e0d4c3;
-            --overlay-color: rgba(218, 201, 177, 0.92);
+            --overlay-color: rgba(218, 201, 177, 0.85);
         }
 
         * {
@@ -25,29 +23,38 @@
         }
 
         body {
-            /* Arka plan resmi buraya tanımlandı */
-            background-image: url('image_9eddd6.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            font-family: 'VT323', monospace;
+            font-family: Georgia, serif;
             color: var(--text-dark);
             height: 100vh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
+            position: relative;
+            background-color: transparent;
         }
 
-        /* HEADER & LOGO */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            z-index: -1;
+        }
+
         header {
-            background-color: var(--bg-dark);
+            background-color: rgba(36, 32, 27, 0.95);
             text-align: center;
             padding: 20px 0 0 0;
             border-bottom: 4px solid var(--border-dark);
         }
 
         .logo {
-            font-family: 'Cinzel', serif;
             font-size: 32px;
             color: var(--text-light);
             letter-spacing: 4px;
@@ -56,14 +63,14 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            font-weight: bold;
         }
 
-        /* Sekmeler (Tabs) */
         .tabs {
             display: flex;
             justify-content: center;
             gap: 15px;
-            transform: translateY(4px); /* Butonları alt çizgiye oturtmak için */
+            transform: translateY(4px);
         }
 
         .tab-btn {
@@ -72,9 +79,10 @@
             border-bottom: none;
             border-radius: 8px 8px 0 0;
             color: var(--text-dark);
-            font-family: 'VT323', monospace;
-            font-size: 22px;
-            padding: 8px 30px;
+            font-family: Georgia, serif;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 30px;
             cursor: pointer;
             box-shadow: inset 2px 2px 0px rgba(255, 255, 255, 0.15);
             transition: background-color 0.2s;
@@ -86,12 +94,11 @@
 
         .tab-btn.active {
             background-color: var(--btn-active);
-            border-bottom: 4px solid var(--btn-active); /* Alt çizgiyi kapatır */
+            border-bottom: 4px solid var(--btn-active);
             margin-bottom: -4px;
-            padding-bottom: 12px;
+            padding-bottom: 14px;
         }
 
-        /* İÇERİK ALANI */
         main {
             flex-grow: 1;
             position: relative;
@@ -107,7 +114,6 @@
             display: block;
         }
 
-        /* HOME SEKME İÇERİĞİ */
         #home {
             display: none;
             flex-direction: column;
@@ -140,7 +146,7 @@
             background-color: var(--btn-normal);
             border: 4px solid var(--border-dark);
             border-radius: 12px;
-            margin-bottom: -15px; /* İkonu butonun üstüne bindiriyoruz */
+            margin-bottom: -15px;
             z-index: 2;
             display: flex;
             justify-content: center;
@@ -155,7 +161,8 @@
             border: 4px solid var(--border-dark);
             border-radius: 8px;
             padding: 15px 40px;
-            font-size: 28px;
+            font-size: 22px;
+            font-weight: bold;
             color: var(--text-dark);
             box-shadow: inset 3px 3px 0px rgba(255, 255, 255, 0.15), 0px 4px 0px rgba(0,0,0,0.3);
             z-index: 1;
@@ -177,12 +184,12 @@
             position: absolute;
             bottom: 30px;
             color: var(--text-light);
-            font-size: 20px;
+            font-size: 18px;
+            font-weight: bold;
             letter-spacing: 2px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* DİĞER SEKMELER (PROJECTS, ABOUT, CONTACT) */
         .content-panel {
             background-color: var(--overlay-color);
             border-top: 4px solid var(--border-dark);
@@ -209,7 +216,8 @@
             justify-content: center;
             padding: 15px;
             color: var(--text-light);
-            font-size: 24px;
+            font-size: 20px;
+            font-weight: bold;
             box-shadow: inset 0px 0px 20px rgba(0,0,0,0.8);
             position: relative;
             cursor: pointer;
@@ -222,7 +230,7 @@
 
         .page-title {
             text-align: center;
-            font-size: 36px;
+            font-size: 32px;
             margin-bottom: 20px;
             border-bottom: 2px dashed var(--border-dark);
             padding-bottom: 10px;
@@ -233,9 +241,8 @@
         
         .page-text {
             text-align: center;
-            font-size: 24px;
+            font-size: 20px;
         }
-
     </style>
 </head>
 <body>
@@ -253,21 +260,18 @@
     </header>
 
     <main>
-        <!-- HOME SEKME -->
         <div id="home" class="tab-content active">
             <div class="social-container">
-                <!-- Discord Butonu -->
                 <a href="https://discord.gg/U6AxhptYNe" target="_blank" class="social-btn-wrapper">
                     <div class="social-icon">
-                        <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6918e57475a843f59f_icon_clyde_black_RGB.svg" alt="Discord" style="width: 40px; opacity: 0.8;">
+                        <img src="discord-icon.png" alt="Discord" style="width: 40px;">
                     </div>
                     <div class="social-label">DISCORD</div>
                 </a>
 
-                <!-- Instagram Butonu -->
                 <a href="https://www.instagram.com/wraithworks0" target="_blank" class="social-btn-wrapper">
                     <div class="social-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#221d18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <img src="instagram-icon.png" alt="Instagram" style="width: 40px;">
                     </div>
                     <div class="social-label">INSTAGRAM</div>
                 </a>
@@ -276,7 +280,6 @@
             <div class="footer-text">FOLLOW THE UNSEEN PATH</div>
         </div>
 
-        <!-- PROJECTS SEKME -->
         <div id="projects" class="tab-content content-panel">
             <h2 class="page-title">OUR PROJECTS</h2>
             <div class="projects-grid">
@@ -289,13 +292,11 @@
             </div>
         </div>
 
-        <!-- ABOUT SEKME -->
         <div id="about" class="tab-content content-panel">
             <h2 class="page-title">ABOUT US</h2>
             <p class="page-text">We are Wraithworks. Building immersive atmospheric experiences.</p>
         </div>
 
-        <!-- CONTACT SEKME -->
         <div id="contact" class="tab-content content-panel">
             <h2 class="page-title">CONTACT</h2>
             <p class="page-text">Reach out to us via our social channels to join the journey.</p>
@@ -304,19 +305,16 @@
 
     <script>
         function openTab(evt, tabName) {
-            // Tüm içerikleri gizle
             let tabContents = document.getElementsByClassName("tab-content");
             for (let i = 0; i < tabContents.length; i++) {
                 tabContents[i].classList.remove("active");
             }
 
-            // Tüm butonların aktiflik durumunu kaldır
             let tabBtns = document.getElementsByClassName("tab-btn");
             for (let i = 0; i < tabBtns.length; i++) {
                 tabBtns[i].classList.remove("active");
             }
 
-            // Tıklanan sekmeyi ve butonu aktif yap
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
